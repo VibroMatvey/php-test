@@ -1,5 +1,5 @@
 <?php
-
+include_once('router.php');
 include_once('db.php');
 include_once('model.php');
 include_once('test.php');
@@ -8,12 +8,6 @@ $conn = get_connect();
 
 // Uncomment to see data in db
 //run_db_test($conn);
-
-$month_names = [
-    '01' => 'January',
-    '02' => 'Februarry',
-    '03' => 'March'
-];
 ?>
 
 <!DOCTYPE html>
@@ -32,7 +26,7 @@ $month_names = [
         <?php
         $users = get_users($conn);
         foreach ($users as $id => $name) {
-            echo "<option value=\"$id\">".$name."</option>";
+            echo "<option value=\"$id\">" . $name . "</option>";
         }
         ?>
     </select>
@@ -42,8 +36,20 @@ $month_names = [
 <div id="data">
     <h2>Transactions of `User name`</h2>
     <table>
-        <tr><th>Mounth</th><th>Amount</th><th>Count</th></tr>
-        <tr><td>...</td><td>...</td><td>...</td>
+        <thead>
+        <tr>
+            <th>Month</th>
+            <th>Amount</th>
+            <th>Count</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>...</td>
+            <td>...</td>
+            <td>...</td>
+        </tr>
+        </tbody>
     </table>
 </div>
 <script src="script.js"></script>
